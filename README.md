@@ -75,9 +75,9 @@ I am including the following directories:
 
 ### Level 3 - Loop Unrolling (64 instructions per cycle) + Blocking (64x64 blocks) + Transposition
 
-    kernel3_L2_B64_U64_ndrange
+    kernel3_L3_B64_U64_ndrange
     
-    kernel3_L2_B64_U64_swi
+    kernel3_L3_B64_U64_swi
 
 *We performed the transposition on the host side so we could look at raw computation performance. So, for level 1 through level 3 kernels, please be sure to send in the B matrix in transposed format.*
 
