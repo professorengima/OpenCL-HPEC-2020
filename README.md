@@ -53,8 +53,6 @@ Using the OpenCL Nomenclature our models were:
 
 ## Directory Structure
 
-I am including the following directories:
-
 ### Level 0 - Naive Implementations
 
     kernel0_L0_ndrange
