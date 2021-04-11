@@ -117,7 +117,7 @@ Given that we are performing Matrix Multiplication, you may be interested in sub
 
 #### SWI Execution
 
-We were highly interested in just how well the compiler could auto-optimize our code for workload given an entire FPGA. So we set the workgroup size to 1 in order to allow the workload to consume the entire FPGA. In OpenCL terms:
+We were highly interested in just how well the compiler could auto-optimize our code for a workload given an entire FPGA. So we set the workgroup size to 1 in order to allow the workload to consume the entire FPGA. In OpenCL terms:
 
   
  ```` //Parameters used for workers on Device
