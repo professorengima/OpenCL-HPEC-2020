@@ -1,10 +1,10 @@
 /*H**********************************************************************
 * AUTHOR: Steven Harris
 *
-* FILENAME: sgemm0_L0_ndrange.cl		DESIGN REF: hydra00
+* FILENAME: sgemm0_L0_swi.cl		DESIGN REF: hydra00
 *
 * DESCRIPTION: First and most basic method for parallel Matrix Multiplication
-*              implemented using NDRANGE (SIMD).
+*              implemented using SWI (PIPELINE PARALLELISM).
 *
 * INPUTS:
 *
@@ -40,20 +40,23 @@
 *H***********************************************************************/
 __kernel void sgemm0(const int M, const int K, const int N, const __global float* restrict A, const __global float* restrict B, __global float* restrict C)
 {
+        float sum = 0.0f;
+
 	//Ranges from 0 to M
-	const int global_row = get_global_id(0);
-
-	//Ranges from 0 to N
-	const int global_column = get_global_id(1);
-
-	//Sum up values over K
-	float sum = 0.0f;
-
-	for (int k=0; k<K; k++)
+	for(int m=0;m<M;m++)
 	{
-		sum += A[global_row*K +k] * B[k*N + global_column];
+		//Ranges from 0 to N
+		for(int n=0;n<N;n++)
+		{
+			//Ranges from 0 to K
+			for (int k=0; k<K; k++)
+			{
+				sum += A[m*K +k] * B[k*N + n];
+			}
+                        
+			//Place in proper C slot
+			C[m*N + n] = sum;
+			sum = 0.0f;
+		}
 	}
-
-	//Place in proper C slot
-	C[global_row*N + global_column] = sum;
 }

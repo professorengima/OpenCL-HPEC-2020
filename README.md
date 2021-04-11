@@ -45,7 +45,7 @@ So, what does that mean exactly?
 
 Given the flexibility of the FPGA, we looked at two execution models.
 
-Using the OpenCL Nomenclature our models were:
+Using the OpenCL Nomenclature our models are:
 
 * NDRANGE -  An N-Dimensional Execution Range [SIMD parallelism]
 

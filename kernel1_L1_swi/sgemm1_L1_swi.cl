@@ -1,10 +1,10 @@
 /*H**********************************************************************
 * AUTHOR: Steven Harris
 *
-* FILENAME: sgemm0_L0_ndrange.cl		DESIGN REF: hydra00
+* FILENAME: sgemm1_L1_swi.cl		DESIGN REF: hydra00
 *
-* DESCRIPTION: First and most basic method for parallel Matrix Multiplication
-*              implemented using NDRANGE (SIMD).
+* DESCRIPTION: Optimized using transposition on matrix B for parallel Matrix
+* 	       Multiplication implemented using SWI (PIPELINE PARALLELISM).
 *
 * INPUTS:
 *
@@ -21,7 +21,9 @@
 *
 *   		The result of AB stored in matrix C.
 *
-*		Note: All Matrices are assumed to be of equal size (i.e. M=K=N)
+*		Note: All Matrices are assumed to be of equal size (i.e. M=K=N).
+*		      Matrix B should be transposed prior to running this kernel
+*		      we did this on the host side before execution.
 *
 * Copyright (C) 2018 Steven Harris
 *
@@ -38,22 +40,25 @@
 *    You should have received a copy of the GNU General Public License
 *    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 *H***********************************************************************/
-__kernel void sgemm0(const int M, const int K, const int N, const __global float* restrict A, const __global float* restrict B, __global float* restrict C)
+__kernel void sgemm1(const int M, const int K, const int N, const __global float* restrict A, const __global float* restrict B, __global float* restrict C)
 {
-	//Ranges from 0 to M
-	const int global_row = get_global_id(0);
-
-	//Ranges from 0 to N
-	const int global_column = get_global_id(1);
-
-	//Sum up values over K
 	float sum = 0.0f;
 
-	for (int k=0; k<K; k++)
+	//Ranges from 0 to M
+	for(int m=0;m<M;m++)
 	{
-		sum += A[global_row*K +k] * B[k*N + global_column];
-	}
+		//Ranges from 0 to N
+		for(int n=0;n<N;n++)
+		{
+			//Ranges from 0 to K
+			for (int k=0; k<K; k++)
+			{
+				sum += A[m*K +k] * B[n*K + k];
+			}
 
-	//Place in proper C slot
-	C[global_row*N + global_column] = sum;
+			//Place in proper C slot
+			C[m*N + n] = sum;
+			sum = 0.0f;
+		}
+	}
 }

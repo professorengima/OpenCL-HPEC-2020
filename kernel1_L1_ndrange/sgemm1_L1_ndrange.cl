@@ -3,8 +3,8 @@
 *
 * FILENAME: sgemm0_L0_ndrange.cl		DESIGN REF: hydra00
 *
-* DESCRIPTION: First and most basic method for parallel Matrix Multiplication
-*              implemented using NDRANGE (SIMD).
+* DESCRIPTION: Optimized using transposition on matrix B for  parallel
+* 		Matrix Multiplication implemented using NDRANGE (SIMD).
 *
 * INPUTS:
 *
@@ -21,7 +21,9 @@
 *
 *   		The result of AB stored in matrix C.
 *
-*		Note: All Matrices are assumed to be of equal size (i.e. M=K=N)
+*		Note: All Matrices are assumed to be of equal size (i.e. M=K=N).
+*		      Matrix B should be transposed prior to running this kernel
+*		      we did this on the host side before execution.
 *
 * Copyright (C) 2018 Steven Harris
 *
@@ -38,7 +40,7 @@
 *    You should have received a copy of the GNU General Public License
 *    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 *H***********************************************************************/
-__kernel void sgemm0(const int M, const int K, const int N, const __global float* restrict A, const __global float* restrict B, __global float* restrict C)
+__kernel void sgemm1(const int M, const int K, const int N, const __global float* restrict A, const __global float* restrict B, __global float* restrict C)
 {
 	//Ranges from 0 to M
 	const int global_row = get_global_id(0);
@@ -51,7 +53,7 @@ __kernel void sgemm0(const int M, const int K, const int N, const __global float
 
 	for (int k=0; k<K; k++)
 	{
-		sum += A[global_row*K +k] * B[k*N + global_column];
+ 		sum += A[global_row*K +k] * B[global_column*K +k];
 	}
 
 	//Place in proper C slot
