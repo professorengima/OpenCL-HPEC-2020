@@ -77,5 +77,6 @@ Using the OpenCL Nomenclature our models were:
     
     kernel3_L3_B64_U64_swi
 
-*We performed the transposition on the host side so we could look at raw computation performance. So, for level 1 through level 3 kernels, please be sure to send in the B matrix in transposed format.*
+*We performed the transposition on the host side so we could look at raw computation performance.* 
+*So, for level 1 through level 3 kernels, please be sure to send in the B matrix in transposed format.*
 
