@@ -13,7 +13,7 @@ You can find more details on my research by reviewing my publication at the 2020
 ## Overview
 
 Given that the Intel HARP device shares a last level cache with the CPU, we wanted to understand the viability and performance impact of using cache-based optimizations on this heterogenous device. I am indebted to the Texas Advanced Computing Center (TACC) at The University of Texas at
-Austin for providing the HPC resources that have contributed to my research results and publications. I am only including the optimized OpenCL code at this stage given that the suite of tools for both execution and compilation may vary for your platform (and tool versions). Much of the host code is TACC specific and that system has been decomissioned. I light of such developments, I can no longer run my complete suite of experiments on that platform. However, if I find the time to generalize the host side code, I may include it to give you some direction on how to setup a host to run these files along with some helpful tools that I created manipulating the matricies.
+Austin for providing the HPC resources that have contributed to my research results and publications. I am only including the optimized OpenCL code at this stage given that the suite of tools for both execution and compilation may vary for your platform (and tool versions). Much of the host code is TACC specific and that system has been decomissioned. I light of such developments, I can no longer run my complete suite of experiments on that platform. However, if I find the time to generalize the host side code, I may include it to give you some direction on how to setup a host to run these files along with some helpful tools that I created for manipulating the matricies.
 
 ## Optimizations
 
