@@ -274,7 +274,7 @@ void pretty_print_matrix(float *Matrix, int rows, int columns, const char *name,
 }
 ````
 
-# Thoughts, Comments, and Catastrophe
+# Thoughts, Comments, and Catastrophes
 
 The work has been completed with the help of many systems, editors, and scripts, but only with my poor two hands. If there is a bug or some other pesky issue that is preparing to drive you mad, please don't hesitate to reach out to me. While I have tried to make much of it as clear as possible, there is always room for improvement. As the saying goes, "To err is Humane; to Forgive, Divine."
 
