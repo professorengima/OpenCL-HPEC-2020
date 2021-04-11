@@ -35,7 +35,7 @@
 *              
 *
 *H*/
-__kernel void sgemm1(const int M, const int K, const int N, const __global float* restrict A, const __global float* restrict B, __global float* restrict C)
+__kernel void sgemm0(const int M, const int K, const int N, const __global float* restrict A, const __global float* restrict B, __global float* restrict C)
 {
         //Ranges from 0 to M
         const int global_row = get_global_id(0);
