@@ -92,7 +92,7 @@ Using the OpenCL nomenclature our models are:
 
 ### Kernels
 
-We created many kernels for our experiments but for this repository we are showing the maximum values for each optimization level. Your optimization levels may vary depending on the resources at your disposal. You will also find some interesting and potentially perplexing results at less than maximum optimizations (see publication results).
+We created many kernels for our experiments but for this repository we are showing the maximum values for each optimization level. Your optimization levels may vary depending on the resources at your disposal. You will also find some interesting and potentially perplexing results at less than the maximum optimization value (see publication results).
 
 ### Work-groups
 
@@ -278,4 +278,4 @@ void pretty_print_matrix(float *Matrix, int rows, int columns, const char *name,
 
 The work has been completed with the help of many systems, editors, and scripts, but only with my poor two hands. If there is a bug or some other pesky issue that is preparing to drive you mad, please don't hesitate to reach out to me. While I have tried to make much of it as clear as possible, there is always room for improvement. As the saying goes, "To err is Humane; to Forgive, Divine."
 
-Please don't hesitate to reach out to me at sharris22 @ wustl.edu (of course without the spaces).
+Please don't hesitate to reach out to me at sharris22 @ wustl.edu (of course, without the spaces).
