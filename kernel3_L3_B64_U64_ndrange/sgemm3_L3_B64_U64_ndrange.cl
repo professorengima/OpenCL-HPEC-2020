@@ -4,7 +4,7 @@
 * FILENAME: sgemm3_L3_B64_U64_ndrange.cl		DESIGN REF: hydra00
 *
 * DESCRIPTION: Optimized using transposition on matrix B for parallel Matrix
-* 	       Multiplication implemented using SWI (PIPELINE PARALLELISM).
+* 	       Multiplication implemented using NDRANGE (SIMD).
 *
 * INPUTS:
 *
